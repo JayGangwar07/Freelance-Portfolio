@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Game Developer Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@700&display=swap');
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            color: #00ffa3;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #1effb1;
+        }
+
+        header {
+            background: linear-gradient(90deg, #0f0f0f 0%, #212121 100%);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 255, 163, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            color: #00ffa3;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.3rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #7af7c0;
+            letter-spacing: 0.05em;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1000px;
+            margin: 2rem auto 4rem;
+            padding: 0 1rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #00ffa3;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #00ffa3;
+            padding-bottom: 0.3rem;
+            width: fit-content;
+        }
+
+        /* ABOUT */
+        #about {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 0 15px #00ffa3aa;
+        }
+
+        #about img.profile-pic {
+            flex: 0 0 200px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 5px 15px #00ffa3aa;
+        }
+
+        #about div.about-text {
+            flex: 1;
+            font-size: 1.1rem;
+            color: #c7f9d4;
+            max-width: 700px;
+        }
+
+        /* PROJECTS */
+        #projects .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+            gap: 1.8rem;
+        }
+
+        .project-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 15px #00ffa3aa;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 25px #00ffaaee;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            filter: brightness(0.85);
+            transition: filter 0.3s ease;
+        }
+
+        .project-card:hover img {
+            filter: brightness(1);
+        }
+
+        .project-info {
+            padding: 1rem 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-info h3 {
+            color: #00ffa3;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .project-info p {
+            flex: 1;
+            color: #b2f9cd;
+            font-size: 0.95rem;
+        }
+
+        /* SKILLS */
+        #skills ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+        }
+
+        #skills ul li {
+            background: #222;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #00ffa3;
+            box-shadow: 0 0 8px #00ffa3bb;
+            transition: background-color 0.3s ease;
+            cursor: default;
+            user-select: none;
+        }
+
+        #skills ul li:hover {
+            background: #00ffa3;
+            color: #121212;
+        }
+
+        /* CONTACT */
+        #contact {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 1.8rem;
+            text-align: center;
+            box-shadow: 0 0 15px #00ffa3aa;
+        }
+
+        #contact p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: #b2f9cd;
+        }
+        
+        #contact a.button {
+            display: inline-block;
+            background: #00ffa3;
+            color: #121212;
+            padding: 0.7rem 2rem;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            box-shadow: 0 6px 14px #00ffa3aa;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        #contact a.button:hover {
+            background: #1effb1;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #111;
+            color: #444;
+            font-size: 0.9rem;
+            user-select: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            #about {
+                flex-direction: column;
+                text-align: center;
+            }
+            #about div.about-text {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GAMEDEV2024</h1>
+        <p>Crafting Immersive Worlds & Epic Experiences</p>
+    </header>
+    <main>
+        <section id="about">
+            <img class="profile-pic" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=200&q=80" alt="Profile picture of game developer" />
+            <div class="about-text">
+                <p>Hello! I'm a passionate game developer specializing in creating immersive 3D worlds and engaging gameplay mechanics. With expertise in Unity, Unreal Engine, and a love for storytelling, I bring games to life from concept to completion. Let's turn ideas into unforgettable gaming experiences.</p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" title="Space Odyssey - A 3D space exploration game">
+                    <img src="https://cdn.pixabay.com/photo/2018/11/08/23/46/space-3805666_1280.jpg" alt="Space Odyssey Game screenshot" />
+                    <div class="project-info">
+                        <h3>Space Odyssey</h3>
+                        <p>A 3D space exploration game with realistic physics and planetary discovery. Built with Unity and C#.</p>
+                    </div>
+                </div>
+                <div class="project-card" title="Cyberpunk Racer - Futuristic racing game">
+                    <img src="https://cdn.pixabay.com/photo/2017/08/30/00/10/cyberpunk-2696462_1280.jpg" alt="Cyberpunk Racer Game screenshot" />
+                    <div class="project-info">
+                        <h3>Cyberpunk Racer</h3>
+                        <p>High-speed futuristic racing with dynamic environments and neon visuals. Developed using Unreal Engine 5.</p>
+                    </div>
+                </div>
+                <div class="project-card" title="Medieval Quest - Action RPG">
+                    <img src="https://cdn.pixabay.com/photo/2022/01/31/16/06/fantasy-6988593_1280.jpg" alt="Medieval Quest Game screenshot" />
+                    <div class="project-info">
+                        <h3>Medieval Quest</h3>
+                        <p>An action RPG set in a vibrant medieval kingdom filled with quests and lore. Powered by custom C++ engine.</p>
+                    </div>
+                </div>
+                <div class="project-card" title="Pixel Platformer - Classic style 2D platformer">
+                    <img src="https://cdn.pixabay.com/photo/2017/12/27/01/16/8-bit-3046861_1280.png" alt="Pixel Platformer screenshot" />
+                    <div class="project-info">
+                        <h3>Pixel Platformer</h3>
+                        <p>A retro 2D pixel art platformer inspired by classic games. Made with Godot Engine and GDScript.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>Unity</li>
+                <li>Unreal Engine 5</li>
+                <li>C#</li>
+                <li>C++</li>
+                <li>Godot Engine</li>
+                <li>Shader Programming</li>
+                <li>3D Modeling</li>
+                <li>Game Design</li>
+                <li>VR/AR Development</li>
+                <li>Git & Version Control</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>Looking for collaborations or job opportunities? Feel free to reach out!</p>
+            <a class="button" href="mailto:gamedev2024@example.com" target="_blank" rel="noopener">Email Me</a>
+            <p style="margin-top:1rem;">
+                <a href="https://github.com/gamedev2024" target="_blank" rel="noopener">GitHub</a> &nbsp;|&nbsp;
+                <a href="https://linkedin.com/in/gamedev2024" target="_blank" rel="noopener">LinkedIn</a> &nbsp;|&nbsp;
+                <a href="https://twitter.com/gamedev2024" target="_blank" rel="noopener">Twitter</a>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2024 GameDev2024. Created with passion.
+    </footer>
+</body>
+</html>
+
+                      
